@@ -51,7 +51,7 @@ public class Registro_Activity extends AppCompatActivity {
                 String Data = (day+" / "+month+" / "+year);
                 DiaActual.setText(Data);
                 ArrayList<ItemRegistros> Lista;
-                ObtenerDatosUser();
+                ObtenerDatosUser(ActualUser.IDEmpleado);
                 Lista = new ArrayList<ItemRegistros>();
                 //Lista.add(new ItemRegistros(TODO: IDEmp, Data, Tipo));
                 //adapter = new AdapterRegistros(this, CargarRegistros() );
@@ -70,7 +70,7 @@ public class Registro_Activity extends AppCompatActivity {
         DatosUsuario ActualUser = null;
         try{
             Statement st = MainActivity.connexionBBDD().createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Marcajes WHERE IDEmpleado = " + Integer.toString(IDEmpl));
+            ResultSet rs = st.executeQuery("SELECT * FROM Marcajes WHERE IDEmpleado = " + IDEmpl);
             ActualUser.IDEmpleado = rs.getInt("IDEmpleado");
             ActualUser.User = rs.getString("Usuario");
             ActualUser.Password = rs.getString("Password");
