@@ -75,7 +75,7 @@ public class Registro_Activity extends AppCompatActivity {
             ActualUser.User = rs.getString("Usuario");
             ActualUser.Password = rs.getString("Password");
             ActualUser.Nombre = rs.getString("Nombre");
-            ActualUser.Apellido = rs.getString("Apellido");
+            ActualUser.Apellido = rs.getString("Apellido");//
             ActualUser.Permissions = rs.getString("Permissions").charAt(0);
         }catch (SQLException e){
             Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
