@@ -51,35 +51,28 @@ public class Registro_Activity extends AppCompatActivity {
                 String Data = (day+" / "+month+" / "+year);
                 DiaActual.setText(Data);
                 ArrayList<ItemRegistros> Lista;
-                ObtenerDatosUser(ActualUser.IDEmpleado);
+
                 Lista = new ArrayList<ItemRegistros>();
-                //Lista.add(new ItemRegistros(TODO: IDEmp, Data, Tipo));
-                //adapter = new AdapterRegistros(this, CargarRegistros() );
+                Lista.add(ObtenerDatosUser(ActualUser.IDEmpleado));
+                adapter = new AdapterRegistros(getApplicationContext(),Lista);
                 LlistaRegistre.setAdapter(adapter);
 
             }
         });
     }
 
-    public void CargarRegistros(int idempl, String data){
-        ArrayList<ItemRegistros> listitems = new ArrayList<>();
-
-    }
-
-    public DatosUsuario ObtenerDatosUser (int IDEmpl){
-        DatosUsuario ActualUser = null;
+    public ItemRegistros ObtenerDatosUser (int IDEmpl){
+        ItemRegistros RegistroDiaActual = null;
         try{
             Statement st = MainActivity.connexionBBDD().createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM Marcajes WHERE IDEmpleado = " + IDEmpl);
-            ActualUser.IDEmpleado = rs.getInt("IDEmpleado");
-            ActualUser.User = rs.getString("Usuario");
-            ActualUser.Password = rs.getString("Password");
-            ActualUser.Nombre = rs.getString("Nombre");
-            ActualUser.Apellido = rs.getString("Apellido");
-            ActualUser.Permissions = rs.getString("Permissions").charAt(0);
+            RegistroDiaActual.IDEmpleado = IDEmpl;
+            RegistroDiaActual.Data = rs.getDate("Data");
+            RegistroDiaActual.Tipo = rs.getString("Tipo").charAt(0);
+
         }catch (SQLException e){
             Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
         }
-        return ActualUser;
+        return RegistroDiaActual;
     }
 }

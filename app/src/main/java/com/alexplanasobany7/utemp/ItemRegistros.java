@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class ItemRegistros {
 
-    private int IDEmpleado;
-    private String Tipo;
-    private Date Data;
+    int IDEmpleado;
+    char Tipo;
+    Date Data;
 
-    public ItemRegistros(int idemp, Date Data, String Tipo){
+    public ItemRegistros(int idemp, Date Data, char Tipo){
         this.IDEmpleado = idemp;
         this.Data = Data;
         this.Tipo = Tipo;
@@ -22,7 +22,7 @@ public class ItemRegistros {
         return this.Data;
     }
 
-    public String getTipo(){
+    public char getTipo(){
         return this.Tipo;
     }
 

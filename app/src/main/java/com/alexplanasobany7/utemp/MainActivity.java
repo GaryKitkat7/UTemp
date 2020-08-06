@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
             Class.forName("net.sourceforce.jtds.jtds.jdbc.Driver").newInstance();
-            connexion= DriverManager.getConnection("jdbc:jtds:sqlserver://172.16.16.92;databaseName=MCon_Test;user=sa;password=Vsn1234");
+            connexion= DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.15.139;databaseName=UTEMP;user=sa;password=Vsn1234");
         }catch(Exception e){
             Toast.makeText(context,e.getMessage(),Toast.LENGTH_SHORT).show();
         }
